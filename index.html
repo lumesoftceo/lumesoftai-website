@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lume Software - Innovate. Progress. Empower.</title>
+    <meta name="description" content="AI-powered productivity and skill development solutions for professionals and organizations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #00D4FF;
+            --teal: #00B4D8;
+            --purple: #8B5CF6;
+            --magenta: #D946EF;
+            --dark: #0F172A;
+            --darker: #020617;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 50%, var(--magenta) 100%);
+            --gradient-subtle: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(139,92,246,0.1) 50%, rgba(217,70,239,0.1) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--darker);
+            color: var(--gray-100);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Effects */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(139,92,246,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139,92,246,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .gradient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--cyan);
+            top: -200px;
+            right: -200px;
+            opacity: 0.15;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--magenta);
+            bottom: 20%;
+            left: -150px;
+            opacity: 0.1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139,92,246,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray-300);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139,92,246,0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139,92,246,0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-subtle);
+            border: 1px solid rgba(139,92,246,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge span {
+            width: 8px;
+            height: 8px;
+            background: var(--cyan);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        h1 .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--gray-400);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(139,92,246,0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(139,92,246,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gray-300);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid var(--gray-600);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--purple);
+            color: var(--white);
+            background: rgba(139,92,246,0.1);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-card {
+            background: linear-gradient(145deg, rgba(15,23,42,0.9), rgba(2,6,23,0.9));
+            border: 1px solid rgba(139,92,246,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-subtle);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .progress-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .progress-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(139,92,246,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            animation: fillProgress 1.5s ease-out forwards;
+        }
+
+        @keyframes fillProgress {
+            from { width: 0; }
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .project-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(139,92,246,0.05);
+            border: 1px solid rgba(139,92,246,0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            border-color: rgba(139,92,246,0.3);
+            background: rgba(139,92,246,0.1);
+        }
+
+        .project-icon {
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-subtle);
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .project-info {
+            flex: 1;
+        }
+
+        .project-name {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-desc {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            line-height: 1.4;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--gradient-subtle);
+            border: 1px solid rgba(139,92,246,0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--gray-400);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: linear-gradient(145deg, rgba(15,23,42,0.8), rgba(2,6,23,0.8));
+            border: 1px solid rgba(139,92,246,0.15);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-subtle);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .product-card:hover {
+            border-color: rgba(139,92,246,0.4);
+            transform: translateY(-5px);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(139,92,246,0.3);
+        }
+
+        .product-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-tagline {
+            font-size: 0.9rem;
+            color: var(--cyan);
+            margin-bottom: 1rem;
+        }
+
+        .product-card p {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .product-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gray-300);
+            font-size: 0.95rem;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            color: var(--cyan);
+            font-weight: bold;
+        }
+
+        .product-status {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0,212,255,0.1);
+            border: 1px solid rgba(0,212,255,0.3);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--cyan);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .founder-card {
+            background: linear-gradient(145deg, rgba(15,23,42,0.9), rgba(2,6,23,0.9));
+            border: 1px solid rgba(139,92,246,0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: sticky;
+            top: 100px;
+        }
+
+        .founder-avatar {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+        }
+
+        .founder-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .founder-title {
+            color: var(--cyan);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .founder-credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .credential-tag {
+            background: rgba(139,92,246,0.1);
+            border: 1px solid rgba(139,92,246,0.2);
+            padding: 0.3rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--gray-300);
+        }
+
+        .founder-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(139,92,246,0.1);
+        }
+
+        .founder-contact a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .founder-contact a:hover {
+            color: var(--cyan);
+        }
+
+        .about-details h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .about-details p {
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-top: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--cyan), var(--purple), var(--magenta));
+        }
+
+        .exp-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--dark);
+            border: 2px solid var(--purple);
+            border-radius: 50%;
+            transform: translateX(-5px);
+        }
+
+        .exp-company {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 1.05rem;
+        }
+
+        .exp-role {
+            color: var(--cyan);
+            font-size: 0.9rem;
+        }
+
+        .exp-period {
+            color: var(--gray-500);
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--gray-400);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--gray-300);
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-subtle);
+            border: 1px solid rgba(139,92,246,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: linear-gradient(145deg, rgba(15,23,42,0.8), rgba(2,6,23,0.8));
+            border: 1px solid rgba(139,92,246,0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--gray-300);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(15,23,42,0.8);
+            border: 1px solid rgba(139,92,246,0.2);
+            border-radius: 10px;
+            color: var(--white);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--purple);
+            box-shadow: 0 0 0 3px rgba(139,92,246,0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(139,92,246,0.3);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(139,92,246,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(2,6,23,0.95);
+            border-top: 1px solid rgba(139,92,246,0.1);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-brand img {
+            height: 40px;
+        }
+
+        .footer-tagline {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--cyan);
+        }
+
+        .footer-legal {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(139,92,246,0.1);
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-legal p {
+            color: var(--gray-500);
+            font-size: 0.85rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content {
+                order: 1;
+            }
+
+            .hero-visual {
+                order: 2;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .founder-card {
+                position: static;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            section {
+                padding: 4rem 1rem;
+            }
+
+            .product-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="lume_logo_jpg.jpg" alt="Lume Software">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Contact Us</a>
+        <button class="mobile-menu-btn">☰</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span></span>
+                    Software Solutions
+                </div>
+                <h1>AI-Powered Tools for <span class="gradient-text">Productivity</span> & <span class="gradient-text">Skill Development</span></h1>
+                <p class="hero-description">We deliver software and AI solutions across all business domains. Currently working on products in specialized skill development for therapeutic and clinical training.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn-primary">Contact Us →</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="card-header">
+                        <div class="card-icon">🚀</div>
+                        <div>
+                            <div class="card-title">Active Projects</div>
+                            <div class="card-subtitle">What We're Working On</div>
+                        </div>
+                    </div>
+                    <div class="project-list">
+                        <div class="project-item">
+                            <div class="project-icon">⚡</div>
+                            <div class="project-info">
+                                <div class="project-name">Productivity & Self-Organization</div>
+                                <div class="project-desc">Tools that help professionals organize work and boost efficiency</div>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-icon">🧠</div>
+                            <div class="project-info">
+                                <div class="project-name">Specialized Skill Development</div>
+                                <div class="project-desc">Training platforms for therapeutic and clinical education including ABA, CBT</div>
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-icon">🎯</div>
+                            <div class="project-info">
+                                <div class="project-name">Custom Software Solutions</div>
+                                <div class="project-desc">Tailored enterprise solutions for specific business needs</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <span class="section-badge">About Us</span>
+            <h2>Built by Industry Veterans</h2>
+            <p class="section-description">15+ years of enterprise experience, now focused on building products that matter.</p>
+        </div>
+        <div class="about-content">
+            <div class="founder-card">
+                <div class="founder-avatar">AB</div>
+                <div class="founder-name">Aditi Bariar</div>
+                <div class="founder-title">Co-Founder & Product Head</div>
+                <div class="founder-credentials">
+                    <span class="credential-tag">B.Tech - SMIT</span>
+                    <span class="credential-tag">Certified Scrum Master</span>
+                    <span class="credential-tag">AWS Certified</span>
+                </div>
+                <div class="founder-contact">
+                    <a href="mailto:ceo@lumesoft.in">📧 ceo@lumesoft.in</a>
+                    <a href="tel:+919892147767">📱 +91-9892147767</a>
+                </div>
+            </div>
+            <div class="about-details">
+                <h3>Our Story</h3>
+                <p>Lume Software was founded with a clear mission: to build technology that genuinely improves how people work and learn. Our team brings extensive experience from leading global financial institutions and technology companies.</p>
+                <p>With 15+ years of enterprise software experience across banking, healthcare, and consulting, we understand what it takes to build reliable, scalable solutions. Now, we're channeling that expertise into creating elegant, powerful tools for professionals and learners.</p>
+                
+                <h3 style="margin-top: 2rem;">Founding Team Experience</h3>
+                <div class="experience-timeline">
+                    <div class="exp-item">
+                        <div class="exp-company">Jatayu Healthcare Technology</div>
+                        <div class="exp-role">Product Head</div>
+                        <div class="exp-period">Jan 2025 - Sept 2025</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-company">JP Morgan Chase</div>
+                        <div class="exp-role">AVP - Technology</div>
+                        <div class="exp-period">2017 - 2024</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-company">Deloitte Consulting</div>
+                        <div class="exp-role">Technology Consultant</div>
+                        <div class="exp-period">2015 - 2017</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-company">Intellect Design (Polaris)</div>
+                        <div class="exp-role">Implementation Engineer</div>
+                        <div class="exp-period">2014 - 2015</div>
+                    </div>
+                    <div class="exp-item">
+                        <div class="exp-company">Wells Fargo</div>
+                        <div class="exp-role">Senior Analyst</div>
+                        <div class="exp-period">2010 - 2014</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <span class="section-badge">Get in Touch</span>
+            <h2>Let's Build Together</h2>
+            <p class="section-description">Have a project in mind or want to learn more? We'd love to hear from you.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p>We're based in Mumbai, India. Reach out for software solutions, partnerships, or just to say hello.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <span>Mumbai, Maharashtra, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <span>ceo@lumesoft.in</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <span>+91-9892147767</span>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem; padding: 1.5rem; background: var(--gradient-subtle); border: 1px solid rgba(139,92,246,0.2); border-radius: 12px;">
+                    <p style="color: var(--gray-300); font-size: 0.95rem; margin: 0;"><strong style="color: var(--white);">Lume Software Private Limited</strong><br>CIN: U62012MH2025PTC452517<br>GSTIN: 27AAGCL3955N1ZW<br>Registered in Mumbai, India</p>
+                </div>
+            </div>
+            <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="interest">I'm interested in</label>
+                    <select id="interest" name="interest">
+                        <option value="general">General Inquiry</option>
+                        <option value="software-solutions">Software Solutions</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your interest..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Message →</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-brand">
+                    <img src="lume_logo_jpg.jpg" alt="Lume Software">
+                </div>
+                <p class="footer-tagline">Innovate. Progress. Empower.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <div class="footer-legal">
+            <p>© 2025 Lume Software Private Limited. All rights reserved. | Mumbai, India</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate progress bars on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fillProgress 1.5s ease-out forwards';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.progress-fill').forEach(bar => {
+            observer.observe(bar);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(2, 6, 23, 0.95)';
+            } else {
+                nav.style.background = 'rgba(2, 6, 23, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
