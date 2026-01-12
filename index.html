@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lume Software - Innovate. Progress. Empower.</title>
-    <meta name="description" content="AI-powered productivity and skill development solutions for professionals and organizations.">
+    <meta name="description" content="AI-powered software solutions for manufacturing, healthcare, finance and enterprise. Deep learning, process optimization, and intelligent automation.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -145,6 +145,22 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        .nav-linkedin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-300);
+            transition: all 0.3s ease;
+        }
+
+        .nav-linkedin:hover {
+            color: #0A66C2;
+        }
+
+        .nav-linkedin::after {
+            display: none;
         }
 
         .nav-cta {
@@ -436,14 +452,14 @@
 
         /* Section Styles */
         section {
-            padding: 6rem 2rem;
+            padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .section-badge {
@@ -581,76 +597,262 @@
             color: var(--cyan);
         }
 
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-            align-items: start;
+        /* Projects Showcase Section */
+        .projects-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .founder-card {
+        .showcase-card {
             background: linear-gradient(145deg, rgba(15,23,42,0.9), rgba(2,6,23,0.9));
             border: 1px solid rgba(139,92,246,0.2);
             border-radius: 20px;
             padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .showcase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+
+        .showcase-card:hover {
+            border-color: rgba(139,92,246,0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(139,92,246,0.15);
+        }
+
+        .showcase-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .showcase-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(139,92,246,0.3);
+        }
+
+        .showcase-badge {
+            background: rgba(0,212,255,0.15);
+            border: 1px solid rgba(0,212,255,0.3);
+            padding: 0.35rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--cyan);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .showcase-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .showcase-desc {
+            color: var(--gray-400);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .showcase-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            background: rgba(139,92,246,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(139,92,246,0.1);
+        }
+
+        .metric {
             text-align: center;
-            position: sticky;
-            top: 100px;
         }
 
-        .founder-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            object-fit: cover;
-            border: 3px solid var(--purple);
-            box-shadow: 0 0 20px rgba(139,92,246,0.3);
+        .metric-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.2rem;
         }
 
-        .founder-name {
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        .showcase-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(139,92,246,0.1);
+            border: 1px solid rgba(139,92,246,0.2);
+            padding: 0.4rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--gray-300);
+            font-weight: 500;
+        }
+
+        .showcase-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-item {
+            color: var(--gray-300);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .showcase-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139,92,246,0.3);
+        }
+
+        .showcase-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139,92,246,0.4);
+        }
+
+        @media (max-width: 768px) {
+            .showcase-metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .showcase-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .showcase-title {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-details h3 {
             font-family: 'Outfit', sans-serif;
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--white);
-            margin-bottom: 0.25rem;
+            margin-bottom: 1rem;
         }
 
-        .founder-title {
-            color: var(--cyan);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+        .about-details p {
+            color: var(--gray-400);
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
         }
 
         .founder-credentials {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            justify-content: center;
             margin-bottom: 1.5rem;
         }
 
         .credential-tag {
             background: rgba(139,92,246,0.1);
             border: 1px solid rgba(139,92,246,0.2);
-            padding: 0.3rem 0.75rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--gray-300);
+        }
+
+        .founder-info {
+            background: rgba(139,92,246,0.05);
+            border: 1px solid rgba(139,92,246,0.15);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .founder-name-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .founder-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .founder-role {
+            background: var(--gradient-primary);
+            padding: 0.25rem 0.75rem;
             border-radius: 50px;
             font-size: 0.75rem;
-            color: var(--gray-300);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .founder-info .founder-credentials {
+            margin-bottom: 1rem;
         }
 
         .founder-contact {
             display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(139,92,246,0.1);
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .founder-contact a {
-            color: var(--gray-400);
+            color: var(--gray-300);
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.3s ease;
@@ -660,23 +862,10 @@
             color: var(--cyan);
         }
 
-        .about-details h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 1rem;
-        }
-
-        .about-details p {
-            color: var(--gray-400);
-            margin-bottom: 1.5rem;
-        }
-
         .experience-timeline {
             position: relative;
             padding-left: 2rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
         .experience-timeline::before {
@@ -691,49 +880,54 @@
 
         .exp-item {
             position: relative;
-            padding-bottom: 1.5rem;
+            padding-bottom: 1.25rem;
+        }
+
+        .exp-item:last-child {
+            padding-bottom: 0;
         }
 
         .exp-item::before {
             content: '';
             position: absolute;
             left: -2rem;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
+            top: 0.4rem;
+            width: 10px;
+            height: 10px;
             background: var(--dark);
-            border: 2px solid var(--purple);
+            border: 2px solid var(--cyan);
             border-radius: 50%;
-            transform: translateX(-5px);
         }
 
         .exp-company {
             font-weight: 600;
             color: var(--white);
-            font-size: 1.05rem;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
         }
 
         .exp-role {
             color: var(--cyan);
             font-size: 0.9rem;
+            margin-bottom: 0.15rem;
         }
 
         .exp-period {
             color: var(--gray-500);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         /* Contact Section */
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 3rem;
             align-items: start;
         }
 
         .contact-info h3 {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: var(--white);
             margin-bottom: 1rem;
@@ -741,63 +935,65 @@
 
         .contact-info p {
             color: var(--gray-400);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
 
         .contact-details {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             color: var(--gray-300);
+            font-size: 0.95rem;
         }
 
         .contact-icon {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background: var(--gradient-subtle);
             border: 1px solid rgba(139,92,246,0.2);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .contact-form {
             background: linear-gradient(145deg, rgba(15,23,42,0.8), rgba(2,6,23,0.8));
             border: 1px solid rgba(139,92,246,0.2);
-            border-radius: 20px;
-            padding: 2.5rem;
+            border-radius: 16px;
+            padding: 2rem;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .form-group label {
             display: block;
             color: var(--gray-300);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 1rem;
+            padding: 0.85rem;
             background: rgba(15,23,42,0.8);
             border: 1px solid rgba(139,92,246,0.2);
-            border-radius: 10px;
+            border-radius: 8px;
             color: var(--white);
             font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
         }
 
@@ -811,16 +1007,16 @@
 
         .form-group textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 100px;
         }
 
         .form-submit {
             width: 100%;
             background: var(--gradient-primary);
             color: var(--white);
-            padding: 1rem 2rem;
+            padding: 0.85rem 1.5rem;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             font-family: 'DM Sans', sans-serif;
             font-weight: 600;
             font-size: 1rem;
@@ -838,8 +1034,8 @@
         footer {
             background: rgba(2,6,23,0.95);
             border-top: 1px solid rgba(139,92,246,0.1);
-            padding: 3rem 2rem;
-            margin-top: 4rem;
+            padding: 2.5rem 2rem;
+            margin-top: 2rem;
         }
 
         .footer-content {
@@ -849,7 +1045,7 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .footer-brand {
@@ -859,24 +1055,24 @@
         }
 
         .footer-brand img {
-            height: 40px;
+            height: 35px;
         }
 
         .footer-tagline {
             color: var(--gray-500);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
         }
 
         .footer-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .footer-links a {
             color: var(--gray-400);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: color 0.3s ease;
         }
 
@@ -884,10 +1080,19 @@
             color: var(--cyan);
         }
 
+        .footer-linkedin {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-linkedin:hover {
+            color: #0A66C2;
+        }
+
         .footer-legal {
             text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
             border-top: 1px solid rgba(139,92,246,0.1);
             max-width: 1200px;
             margin-left: auto;
@@ -940,14 +1145,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .founder-card {
-                position: static;
-            }
-
             .contact-container {
                 grid-template-columns: 1fr;
             }
@@ -995,8 +1192,14 @@
             <img src="lume_logo_jpg.jpg" alt="Lume Software">
         </div>
         <ul class="nav-links">
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="https://www.linkedin.com/company/110572426" target="_blank" class="nav-linkedin" title="Follow us on LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+            </a></li>
         </ul>
         <a href="#contact" class="nav-cta">Contact Us</a>
         <button class="mobile-menu-btn">☰</button>
@@ -1008,10 +1211,10 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span></span>
-                    Software Solutions
+                    AI & Software Solutions
                 </div>
-                <h1>AI-Powered Tools for <span class="gradient-text">Productivity</span> & <span class="gradient-text">Skill Development</span></h1>
-                <p class="hero-description">We deliver software and AI solutions across all business domains. Currently working on products in specialized skill development for therapeutic and clinical training.</p>
+                <h1><span class="gradient-text">AI-Powered Solutions</span> for Modern Businesses</h1>
+                <p class="hero-description">We build intelligent software and AI solutions across manufacturing, healthcare, finance, and enterprise domains. From deep learning to process optimization — we solve complex business challenges.</p>
                 <div class="hero-cta">
                     <a href="#contact" class="btn-primary">Contact Us →</a>
                 </div>
@@ -1027,24 +1230,31 @@
                     </div>
                     <div class="project-list">
                         <div class="project-item">
+                            <div class="project-icon">💚</div>
+                            <div class="project-info">
+                                <div class="project-name">Online Therapy Facilitator</div>
+                                <div class="project-desc">Child & adult therapy platform with AI-assisted session management</div>
+                            </div>
+                        </div>
+                        <div class="project-item">
                             <div class="project-icon">⚡</div>
                             <div class="project-info">
-                                <div class="project-name">Productivity & Self-Organization</div>
-                                <div class="project-desc">Tools that help professionals organize work and boost efficiency</div>
+                                <div class="project-name">AI Personal Secretary</div>
+                                <div class="project-desc">Intelligent assistant for productivity, scheduling & smart reminders</div>
                             </div>
                         </div>
                         <div class="project-item">
-                            <div class="project-icon">🧠</div>
+                            <div class="project-icon">🤖</div>
                             <div class="project-info">
-                                <div class="project-name">Specialized Skill Development</div>
-                                <div class="project-desc">Training platforms for therapeutic and clinical education including ABA, CBT</div>
+                                <div class="project-name">Deep Reinforcement Learning for Manufacturing</div>
+                                <div class="project-desc">DRL-based process optimization for tyre curing - energy savings & quality control</div>
                             </div>
                         </div>
                         <div class="project-item">
-                            <div class="project-icon">🎯</div>
+                            <div class="project-icon">🛡️</div>
                             <div class="project-info">
-                                <div class="project-name">Custom Software Solutions</div>
-                                <div class="project-desc">Tailored enterprise solutions for specific business needs</div>
+                                <div class="project-name">SentinAI - Edge AI System Monitor</div>
+                                <div class="project-desc">Real-time anomaly detection with automatic process identification</div>
                             </div>
                         </div>
                     </div>
@@ -1053,7 +1263,175 @@
         </div>
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <span class="section-badge">Our Work</span>
+            <h2>Active Projects</h2>
+            <p class="section-description">Cutting-edge AI and software solutions for real-world industrial challenges.</p>
+        </div>
+        <div class="projects-showcase">
+            <div class="showcase-card">
+                <div class="showcase-header">
+                    <div class="showcase-icon">💚</div>
+                    <div class="showcase-badge">HealthTech</div>
+                </div>
+                <h3 class="showcase-title">Online Therapy Facilitator</h3>
+                <p class="showcase-desc">A comprehensive digital platform designed to facilitate online therapy sessions for children and adults. Streamlines therapist workflows with AI-assisted session management, progress tracking, and personalized treatment planning.</p>
+                
+                <div class="showcase-metrics">
+                    <div class="metric">
+                        <div class="metric-value">Child & Adult</div>
+                        <div class="metric-label">Therapy Support</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">AI-Assisted</div>
+                        <div class="metric-label">Session Management</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">360°</div>
+                        <div class="metric-label">Progress Tracking</div>
+                    </div>
+                </div>
+                
+                <div class="showcase-tech">
+                    <span class="tech-tag">Telehealth</span>
+                    <span class="tech-tag">ABA Therapy</span>
+                    <span class="tech-tag">CBT</span>
+                    <span class="tech-tag">HIPAA Compliant</span>
+                </div>
+                
+                <div class="showcase-features">
+                    <div class="feature-item">✓ Secure video sessions for remote therapy</div>
+                    <div class="feature-item">✓ AI-powered session notes & documentation</div>
+                    <div class="feature-item">✓ Treatment goal tracking & analytics</div>
+                    <div class="feature-item">✓ Parent/caregiver engagement portal</div>
+                </div>
+                
+                <a href="#contact" class="showcase-link">Contact for Demo →</a>
+            </div>
 
+            <div class="showcase-card">
+                <div class="showcase-header">
+                    <div class="showcase-icon">⚡</div>
+                    <div class="showcase-badge">Productivity</div>
+                </div>
+                <h3 class="showcase-title">AI Personal Secretary</h3>
+                <p class="showcase-desc">Your intelligent digital assistant that helps you stay organized and productive. Manages tasks, schedules, and priorities while learning your work patterns to provide smart suggestions and timely reminders.</p>
+                
+                <div class="showcase-metrics">
+                    <div class="metric">
+                        <div class="metric-value">Smart</div>
+                        <div class="metric-label">Task Prioritization</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Adaptive</div>
+                        <div class="metric-label">Scheduling</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Context-Aware</div>
+                        <div class="metric-label">Reminders</div>
+                    </div>
+                </div>
+                
+                <div class="showcase-tech">
+                    <span class="tech-tag">Natural Language</span>
+                    <span class="tech-tag">Calendar Sync</span>
+                    <span class="tech-tag">Task Management</span>
+                    <span class="tech-tag">AI Automation</span>
+                </div>
+                
+                <div class="showcase-features">
+                    <div class="feature-item">✓ Intelligent task creation & prioritization</div>
+                    <div class="feature-item">✓ Smart calendar management & scheduling</div>
+                    <div class="feature-item">✓ Daily briefings & productivity insights</div>
+                    <div class="feature-item">✓ Cross-platform sync & integrations</div>
+                </div>
+                
+                <a href="#contact" class="showcase-link">Contact for Demo →</a>
+            </div>
+
+            <div class="showcase-card">
+                <div class="showcase-header">
+                    <div class="showcase-icon">🤖</div>
+                    <div class="showcase-badge">Deep RL</div>
+                </div>
+                <h3 class="showcase-title">Tyre Curing Process Optimization</h3>
+                <p class="showcase-desc">Deep Reinforcement Learning solution for optimizing the vulcanization process in tyre manufacturing. The system learns optimal temperature-pressure profiles to maximize efficiency.</p>
+                
+                <div class="showcase-metrics">
+                    <div class="metric">
+                        <div class="metric-value">5-10%</div>
+                        <div class="metric-label">Energy Savings</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">3-8%</div>
+                        <div class="metric-label">Cycle Time Reduction</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">60%</div>
+                        <div class="metric-label">Better Consistency</div>
+                    </div>
+                </div>
+                
+                <div class="showcase-tech">
+                    <span class="tech-tag">SAC Algorithm</span>
+                    <span class="tech-tag">Gymnasium</span>
+                    <span class="tech-tag">Stable-Baselines3</span>
+                    <span class="tech-tag">Python</span>
+                </div>
+                
+                <div class="showcase-features">
+                    <div class="feature-item">✓ Custom physics simulation with Arrhenius kinetics</div>
+                    <div class="feature-item">✓ Continuous control for heater & pressure</div>
+                    <div class="feature-item">✓ Comparison with PID & fixed-profile baselines</div>
+                    <div class="feature-item">✓ Production-ready architecture</div>
+                </div>
+                
+                <a href="https://github.com/lume-software/tyre-curing-drl" class="showcase-link" target="_blank">View on GitHub →</a>
+            </div>
+
+            <div class="showcase-card">
+                <div class="showcase-header">
+                    <div class="showcase-icon">🛡️</div>
+                    <div class="showcase-badge">Edge AI</div>
+                </div>
+                <h3 class="showcase-title">SentinAI - Intelligent System Monitor</h3>
+                <p class="showcase-desc">An Edge AI-powered system monitor that learns your computer's normal behavior and detects resource anomalies in real-time. When unusual CPU, RAM, or Disk activity is detected, SentinAI automatically identifies the exact process responsible.</p>
+                
+                <div class="showcase-metrics">
+                    <div class="metric">
+                        <div class="metric-value">Real-time</div>
+                        <div class="metric-label">Anomaly Detection</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">On-Device</div>
+                        <div class="metric-label">AI Inference</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Auto</div>
+                        <div class="metric-label">Process Identification</div>
+                    </div>
+                </div>
+                
+                <div class="showcase-tech">
+                    <span class="tech-tag">Edge Computing</span>
+                    <span class="tech-tag">Anomaly Detection</span>
+                    <span class="tech-tag">Closed-Loop Control</span>
+                    <span class="tech-tag">Python</span>
+                </div>
+                
+                <div class="showcase-features">
+                    <div class="feature-item">✓ Learns normal system behavior patterns</div>
+                    <div class="feature-item">✓ Real-time CPU, RAM & Disk monitoring</div>
+                    <div class="feature-item">✓ Automatic anomaly detection</div>
+                    <div class="feature-item">✓ Pinpoints responsible processes</div>
+                </div>
+                
+                <a href="https://github.com/lumesoftceo/edge-ai-closeLoopControl/tree/main/Resource-governor" class="showcase-link" target="_blank">View on GitHub →</a>
+            </div>
+        </div>
+    </section>
 
     <!-- About Section -->
     <section id="about">
@@ -1063,26 +1441,35 @@
             <p class="section-description">15+ years of enterprise experience, now focused on building products that matter.</p>
         </div>
         <div class="about-content">
-            <div class="founder-card">
-                <img src="founder-pic.jpg" alt="Aditi Bariar" class="founder-avatar">
-                <div class="founder-name">Aditi Bariar</div>
-                <div class="founder-title">CEO</div>
-                <div class="founder-credentials">
-                    <span class="credential-tag">Ex JP Morgan</span>
-                    <span class="credential-tag">Ex Deloitte</span>
-                    <span class="credential-tag">Ex Wells Fargo</span>
-                </div>
-                <div class="founder-contact">
-                    <a href="mailto:ceo@lumesoft.in">📧 ceo@lumesoft.in</a>
-                    <a href="tel:+919892147767">📱 +91-9892147767</a>
-                </div>
-            </div>
             <div class="about-details">
                 <h3>Our Story</h3>
                 <p>Lume Software was founded with a clear mission: to build technology that genuinely improves how people work and learn. Our team brings extensive experience from leading global financial institutions and technology companies.</p>
                 <p>With 15+ years of enterprise software experience across banking, healthcare, and consulting, we understand what it takes to build reliable, scalable solutions. Now, we're channeling that expertise into creating elegant, powerful tools for professionals and learners.</p>
                 
-                <h3 style="margin-top: 2rem;">Founding Team Experience</h3>
+                <h3>Founder</h3>
+                <div class="founder-info">
+                    <div class="founder-name-title">
+                        <span class="founder-name">Aditi Bariar</span>
+                        <span class="founder-role">CEO</span>
+                    </div>
+                    <div class="founder-credentials">
+                        <span class="credential-tag">Ex JP Morgan</span>
+                        <span class="credential-tag">Ex Deloitte</span>
+                        <span class="credential-tag">Ex Wells Fargo</span>
+                    </div>
+                    <div class="founder-contact">
+                        <a href="mailto:ceo@lumesoft.in">📧 ceo@lumesoft.in</a>
+                        <a href="tel:+919892147767">📱 +91-9892147767</a>
+                        <a href="https://www.linkedin.com/in/aditi-bariar" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 4px;">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <h3>Team Experience</h3>
                 <div class="experience-timeline">
                     <div class="exp-item">
                         <div class="exp-company">Jatayu Healthcare Technology</div>
@@ -1132,7 +1519,7 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">📧</div>
-                        <span>ceo@lumesoft.in</span>
+                        <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cba8aea48ba7bea6aeb8a4adbfe5a2a5">[email&#160;protected]</a></span>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">📱</div>
@@ -1180,8 +1567,14 @@
                 <p class="footer-tagline">Innovate. Progress. Empower.</p>
             </div>
             <div class="footer-links">
+                <a href="#projects">Projects</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
+                <a href="https://www.linkedin.com/company/110572426" target="_blank" class="footer-linkedin" title="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
             </div>
         </div>
         <div class="footer-legal">
@@ -1189,7 +1582,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1206,15 +1599,4 @@
 
         // Animate progress bars on scroll
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fillProgress 1.5s ease-out forwards';
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.progress-fill').forEach(bar => {
-            observer.observe(bar);
-        });
-
-        // Navbar background on 
+            entries.forEach(entry =>
